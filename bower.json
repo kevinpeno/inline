@@ -1,0 +1,22 @@
+{
+  "name": "inline",
+  "version": "0.0.0",
+  "main": "src/main.less",
+  "authors": [
+    "Kevin Peno <kevinpeno@gmail.com>"
+  ],
+  "description": "css grid component",
+  "keywords": [
+    "css",
+    "grid",
+    "component"
+  ],
+  "license": "Unlicense",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
