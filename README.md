@@ -1,2 +1,2 @@
 # inline
-css grid framework that doesn't use floats
+css grid component that doesn't use floats
