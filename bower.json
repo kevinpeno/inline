@@ -1,7 +1,7 @@
 {
   "name": "inline",
   "version": "0.0.0",
-  "main": "src/main.less",
+  "main": "src/inline.less",
   "authors": [
     "Kevin Peno <kevinpeno@gmail.com>"
   ],
