@@ -6,6 +6,7 @@
 	letter-spacing: -1ch; // negative width of " " character; yay monospace!
 
 	// gutter
+	box-sizing: border-box;
 	padding-left: @gutter / 2;
 	padding-right: @gutter / 2;
 
@@ -15,10 +16,9 @@
 		letter-spacing: @letter-spacing;
 
 		// set gutter
+		box-sizing: border-box;
 		padding-left: @gutter / 2;
 		padding-right: @gutter / 2;
-
-		display: inline-block;
 	}
 }
 
