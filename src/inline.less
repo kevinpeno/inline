@@ -17,13 +17,14 @@
 		// set gutter
 		padding-left: @gutter / 2;
 		padding-right: @gutter / 2;
+
+		display: inline-block;
 	}
 }
 
 // column using fraction as parameter
 .column(@width) when (isunit(@width, "")) and (@width < 1) {
-	width: floor(@width * 100%); // browsers without sub-pixel rendering
-	width: ~"calc(@{width} * 100%)"; // browsers with subpixel rendering
+	width: @width * 100%;
 }
 
 // column when whole number is given
