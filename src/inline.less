@@ -1,4 +1,4 @@
-.container(@gutter; @font-family: sans-serif; @letter-spacing: normal){
+.inline-grid(@gutter; @font-family: sans-serif; @letter-spacing: normal){
 	// prevents browsers from changing monospace'd elements to 13px
 	font-family: monospace, monospace;
 	// prevents a space between inline-block elements from causing extra space
@@ -20,24 +20,24 @@
 		padding-left: @gutter / 2;
 		padding-right: @gutter / 2;
 	}
-}
 
-// column using fraction as parameter
-.column(@width) when (isunit(@width, "")) and (@width < 1) {
-	width: @width * 100%;
-}
+	// column using fraction as parameter
+	.inline-column(@width) when (isunit(@width, "")) and (@width < 1) {
+		width: @width * 100%;
+	}
 
-// column when whole number is given
-// assume percent
-.column(@width) when (isunit(@width, "")) and not (@width < 1) {
-	width: percentage( @width / 100 );
-}
+	// column when whole number is given
+	// assume percent
+	.inline-column(@width) when (isunit(@width, "")) and not (@width < 1) {
+		width: percentage( @width / 100 );
+	}
 
-// column when non-fraction width given
-.column(@width) when not (isunit(@width, "")) {
-	width: @width;
-}
+	// column when non-fraction width given
+	.inline-column(@width) when not (isunit(@width, "")) {
+		width: @width;
+	}
 
-.column(@width) {
-	display: inline-block;
+	.inline-column(@width) {
+		display: inline-block;
+	}
 }
