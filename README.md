@@ -1,5 +1,5 @@
 # inline
-css grid component that doesn't use floats
+css grid component that doesn't use floats. Supports all browsers if using a [Progressive Enahancement](http://alistapart.com/article/understandingprogressiveenhancement) approach (see [#3](https://github.com/kevinpeno/inline/issues/3))
 
 Why? Because floats need to die in a fire! http://jsfiddle.net/4s7R6/29/
 
