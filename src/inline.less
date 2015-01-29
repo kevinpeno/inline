@@ -1,43 +1,50 @@
-.inline-grid(@gutter; @font-family: sans-serif; @letter-spacing: normal){
-	// prevents browsers from changing monospace'd elements to 13px
-	font-family: monospace, monospace;
-	// prevents a space between inline-block elements from causing extra space
-	letter-spacing: -0.6em; // for browsers without ch unit, close enough
-	letter-spacing: -1ch; // negative width of " " character; yay monospace!
+.inline-grid(@gutter; @font-family: sans-serif; @letter-spacing: normal) {
+	@half-gutter: @gutter / 2;
 
-	// gutter
-	box-sizing: border-box;
-	padding-left: @gutter / 2;
-	padding-right: @gutter / 2;
+	// :root and the ch unit have about the same support levels since IE9+ and in evergreen browsers
+	:root & {
+		// prevents browsers from changing monospaced elements to 13px
+		font-family: monospace, monospace;
+		// prevents a space between inline-block elements from being there
+		letter-spacing: -1ch; // negative width of " " character; yay monospace!
 
-	& > * {
-		// reset family and letter spacing on child elements
-		font-family: @font-family;
-		letter-spacing: @letter-spacing;
-
-		// set gutter
+		// outside gutter
 		box-sizing: border-box;
-		padding-left: @gutter / 2;
-		padding-right: @gutter / 2;
+		padding-left: @half-gutter;
+		padding-right: @half-gutter;
+
+
+		& > * {
+			// reset family and letter spacing on child elements
+			font-family: @font-family;
+			letter-spacing: @letter-spacing;
+
+			// set gutter -- needed even if a width is never set to a child
+			box-sizing: border-box;
+			padding-left: @half-gutter;
+			padding-right: @half-gutter;
+		}
 	}
 
-	// column using fraction as parameter
-	.inline-column(@width) when (isunit(@width, "")) and (@width < 1) {
-		width: @width * 100%;
-	}
+	.inline-grid-column(@width) {
+		:root & {
+			// Assigning the inline-block here prevents unnecessary css for grid items that would be 100%
+			display: inline-block;
 
-	// column when whole number is given
-	// assume percent
-	.inline-column(@width) when (isunit(@width, "")) and not (@width < 1) {
-		width: percentage( @width / 100 );
-	}
+			// column using fraction as parameter
+			& when (isunit(@width, "")) and (@width < 1) {
+				width: @width * 100%;
+			}
 
-	// column when non-fraction width given
-	.inline-column(@width) when not (isunit(@width, "")) {
-		width: @width;
-	}
+			// column when whole number is given -- assume percent
+			& when (isunit(@width, "")) and not (@width < 1) {
+				width: percentage( @width / 100 );
+			}
 
-	.inline-column(@width) {
-		display: inline-block;
+			// for anything else we'll assume you meant to put it there
+			& when not (isunit(@width, "")) {
+				width: @width;
+			}
+		}
 	}
 }
